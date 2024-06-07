@@ -8,9 +8,9 @@ public class GetProductsEndpoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapGet("/products", async (ISender sender) =>
+        app.MapGet("/products", async (ISender sender, CancellationToken cancellation) =>
         {
-            var result = await sender.Send(new GetProductsQuery());
+            var result = await sender.Send(new GetProductsQuery(), cancellation);
 
             var response = result.Adapt<GetProductsResponse>();
 
@@ -20,6 +20,6 @@ public class GetProductsEndpoint : ICarterModule
           .Produces<GetProductsResponse>(StatusCodes.Status200OK)
           .ProducesProblem(StatusCodes.Status400BadRequest)
           .WithSummary("Get Products")
-          .WithDescription("Get Products"); ;
+          .WithDescription("Get Products");
     }
 }
