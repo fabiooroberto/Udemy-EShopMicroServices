@@ -7,8 +7,8 @@ public class Order : Aggretate<OrderId>
 
     public CustomerId CustomerId { get; private set; } = default!;
     public OrderName OrderName { get; private set; } = default!;
-    public Address ShippingAdress { get; private set; } = default!;
-    public Address BillingAdress { get; private set; } = default!;
+    public Address ShippingAddress { get; private set; } = default!;
+    public Address BillingAddress { get; private set; } = default!;
     public Payment Payment { get; private set; } = default!;
     public OrderStatus Status { get; private set; } = OrderStatus.Pending;
     public decimal TotalPrice
@@ -17,15 +17,15 @@ public class Order : Aggretate<OrderId>
         private set { }
     }
 
-    public static Order Create(OrderId id, CustomerId customerId, OrderName orderName, Address shippingAdress, Address billingAdress, Payment payment)
+    public static Order Create(OrderId id, CustomerId customerId, OrderName orderName, Address shippingAddress, Address billingAddress, Payment payment)
     {
         var order = new Order
         {
             Id = id,
             CustomerId = customerId,
             OrderName = orderName,
-            ShippingAdress = shippingAdress,
-            BillingAdress = billingAdress,
+            ShippingAddress = shippingAddress,
+            BillingAddress = billingAddress,
             Payment = payment,
             Status = OrderStatus.Pending
         };
@@ -35,11 +35,11 @@ public class Order : Aggretate<OrderId>
         return order;
     }
 
-    public void Update(OrderName orderName, Address shippingAdress, Address billingAdress, Payment payment, OrderStatus status)
+    public void Update(OrderName orderName, Address shippingAddress, Address billingAddress, Payment payment, OrderStatus status)
     {
         OrderName = orderName;
-        ShippingAdress = shippingAdress;
-        BillingAdress = billingAdress;
+        ShippingAddress = shippingAddress;
+        BillingAddress = billingAddress;
         Payment = payment;
         Status = status;
 
