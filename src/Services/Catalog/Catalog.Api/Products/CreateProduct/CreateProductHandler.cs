@@ -25,7 +25,7 @@ internal class CreateProductCommandHandler(IDocumentSession session) : ICommandH
             Category = command.Category,
             Description = command.Description,
             Price = command.Price,
-            ImagemFile = command.ImagemFile
+            ImageFile = command.ImagemFile
         };
 
         session.Store(product);
